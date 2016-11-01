@@ -1,0 +1,23 @@
+{
+  "name": "gametime",
+  "version": "1.0.0",
+  "description": "Gametime",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "css-loader": "^0.25.0",
+    "mocha": "^3.1.2",
+    "mocha-loader": "^1.0.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
