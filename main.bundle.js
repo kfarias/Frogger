@@ -45,15 +45,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Frog = __webpack_require__(1);
-	__webpack_require__(2);
-
-
+	var Cars = __webpack_require__(2);
 
 
 	var canvas = document.getElementById('myCanvas');
 	var context = canvas.getContext('2d');
 
 	var frog = new Frog((canvas.width-25)/2, (canvas.height-30), 25, 25)
+
+
 
 	var rightPressed = false;
 	var leftPressed = false;
@@ -92,6 +92,8 @@
 	requestAnimationFrame(function gameLoop() {
 	  context.clearRect(0, 0, canvas.width, canvas.height);
 	  frog.drawFrog(context);
+	  // carArray.forEach(function(car) {
+	  //   car.draw(context))};
 	  frog.moveFrog(canvas, rightPressed, leftPressed, upPressed, downPressed);
 	  requestAnimationFrame(gameLoop);
 	});
@@ -104,7 +106,7 @@
 /* 1 */
 /***/ function(module, exports) {
 
-
+	
 
 	function Frog(x, y, width, height){
 	  this.x = x;
@@ -118,10 +120,7 @@
 	  context.fillStyle = "turquoise";
 	}
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 36b13e161d09fc1bfbd7c81414bbe9903db3b379
 	Frog.prototype.moveFrog = function(canvas, rightPressed, leftPressed, upPressed, downPressed) {
 	  if (rightPressed) {
 	    this.x += 5;
@@ -139,9 +138,9 @@
 
 /***/ },
 /* 2 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-
+	var Index = __webpack_require__(1)
 
 	function Cars (x, y, width, height){
 	 this.x = x;
@@ -150,22 +149,21 @@
 	 this.height = height;
 	}
 
-	Cars.prototype.draw = function() {
+	Cars.prototype.draw = function(context) {
 	context.fillRect(this.x, this.y, this.width, this.height);
 	return this;
 	};
 
-<<<<<<< HEAD
-	Cars.prototype.move = function(){
+	var carArray = [];
 
-	}
-=======
-	c
->>>>>>> 36b13e161d09fc1bfbd7c81414bbe9903db3b379
+	carArray.push(new Cars(10, 10, 50, 50));
+	carArray.push(new Cars(40, 40, 40, 40));
 
 
-	var firstCar = new Cars(50, 50, 10, 10);
-	firstCar.draw();
+
+	//
+	// var firstCar = new Cars(50, 50, 10, 10);
+	// firstCar.draw();
 
 	// requestAnimationFrame(function gameLoop() {
 	//   context.clearRect(0, 0, canvas.width, canvas.height);
