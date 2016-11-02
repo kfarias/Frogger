@@ -44,7 +44,9 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1)
+	__webpack_require__(1);
+	__webpack_require__(2);
+	__webpack_require__(3);
 
 
 /***/ },
@@ -54,7 +56,7 @@
 	var canvas = document.getElementById('myCanvas');
 	var context = canvas.getContext('2d');
 
-	var frogWidth = 70;
+	var frogWidth = 25;
 	var frogHeight = 25;
 	var frogx = (canvas.width-frogWidth)/2;
 	var frogy = (canvas.height-30);
@@ -64,7 +66,7 @@
 	var downPressed = false;
 
 	function drawFrog() {
-	  context.clearRect(0, 0, canvas.width, canvas.height);
+	  // context.clearRect(0, 0, canvas.width, canvas.height);
 	  context.fillRect(frogx, frogy, frogWidth, frogHeight);
 	  context.fillStyle = "turquoise";
 
@@ -107,7 +109,53 @@
 	}
 
 
-	setInterval(drawFrog, 10);
+	// setInterval(drawFrog, 10);
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	// var canvas = document.getElementById('myCanvas');
+	// var context = canvas.getContext('2d');
+
+	function Cars (x, y, width, height){
+	 this.x = x;
+	 this.y = y;
+	 this.width = width;
+	 this.height = height;
+	}
+
+	Cars.prototype.draw = function() {
+	context.fillRect(this.x, this.y, this.width, this.height);
+	return this;
+	};
+
+
+	var firstCar = new Cars(50, 50, 10, 10);
+	// firstCar.draw();
+
+	// requestAnimationFrame(function gameLoop() {
+	//   context.clearRect(0, 0, canvas.width, canvas.height);
+	//   drawFrog();
+	//   firstCar.draw();
+	//   requestAnimationFrame(gameLoop);
+	// });
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	var canvas = document.getElementById('myCanvas');
+	var context = canvas.getContext('2d');
+
+	requestAnimationFrame(function gameLoop() {
+	  context.clearRect(0, 0, canvas.width, canvas.height);
+	  drawFrog();
+	  firstCar.draw();
+	  requestAnimationFrame(gameLoop);
+	});
 
 
 /***/ }
