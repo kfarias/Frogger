@@ -44,42 +44,21 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1);
+	var Frog = __webpack_require__(1);
 	__webpack_require__(2);
-	__webpack_require__(3);
 
-
-/***/ },
-/* 1 */
-/***/ function(module, exports) {
 
 	var canvas = document.getElementById('myCanvas');
 	var context = canvas.getContext('2d');
 
-	var frogWidth = 25;
-	var frogHeight = 25;
-	var frogx = (canvas.width-frogWidth)/2;
-	var frogy = (canvas.height-30);
+	var frog = new Frog((canvas.width-25)/2, (canvas.height-30), 25, 25)
+
 	var rightPressed = false;
 	var leftPressed = false;
 	var upPressed = false;
 	var downPressed = false;
 
-	function drawFrog() {
-	  // context.clearRect(0, 0, canvas.width, canvas.height);
-	  context.fillRect(frogx, frogy, frogWidth, frogHeight);
-	  context.fillStyle = "turquoise";
 
-	  if (rightPressed) {
-	    frogx += 5;
-	  } else if (leftPressed && frogx > 0) {
-	    frogx -= 5;
-	  } else if (upPressed && frogy > 0) {
-	    frogy -= 5;
-	  } else if (downPressed && frogy < canvas.height-frogHeight) {
-	    frogy += 5;
-	  }
-	}
 
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
@@ -108,16 +87,56 @@
 	  }
 	}
 
+	requestAnimationFrame(function gameLoop() {
+	  context.clearRect(0, 0, canvas.width, canvas.height);
+	  frog.drawFrog(context);
+	  frog.moveFrog(canvas, rightPressed, leftPressed, upPressed, downPressed);
+	  requestAnimationFrame(gameLoop);
+	});
+
 
 	// setInterval(drawFrog, 10);
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports) {
+
+	
+
+	function Frog(x, y, width, height){
+	  this.x = x;
+	  this.y = y;
+	  this.width = width;
+	  this.height = height;
+	}
+
+	Frog.prototype.drawFrog = function(context) {
+	  context.fillRect(this.x, this.y, this.width, this.height);
+	  context.fillStyle = "turquoise";
+	}
+
+
+	Frog.prototype.moveFrog = function(canvas, rightPressed, leftPressed, upPressed, downPressed) {
+	  if (rightPressed) {
+	    this.x += 5;
+	  } else if (leftPressed && this.x > 0) {
+	    this.x -= 5;
+	  } else if (upPressed && this.y > 0) {
+	    this.y -= 5;
+	  } else if (downPressed && this.y < canvas.height-this.height) {
+	    this.y += 5;
+	  }
+	}
+
+	module.exports = Frog;
 
 
 /***/ },
 /* 2 */
 /***/ function(module, exports) {
 
-	// var canvas = document.getElementById('myCanvas');
-	// var context = canvas.getContext('2d');
+	
 
 	function Cars (x, y, width, height){
 	 this.x = x;
@@ -131,9 +150,13 @@
 	return this;
 	};
 
+	Cars.prototype.move = function(){
+
+	}
+
 
 	var firstCar = new Cars(50, 50, 10, 10);
-	// firstCar.draw();
+	firstCar.draw();
 
 	// requestAnimationFrame(function gameLoop() {
 	//   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -142,20 +165,7 @@
 	//   requestAnimationFrame(gameLoop);
 	// });
 
-
-/***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	var canvas = document.getElementById('myCanvas');
-	var context = canvas.getContext('2d');
-
-	requestAnimationFrame(function gameLoop() {
-	  context.clearRect(0, 0, canvas.width, canvas.height);
-	  drawFrog();
-	  firstCar.draw();
-	  requestAnimationFrame(gameLoop);
-	});
+	module.exports = Cars;
 
 
 /***/ }
