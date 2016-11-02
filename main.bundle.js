@@ -48,6 +48,8 @@
 	__webpack_require__(2);
 
 
+
+
 	var canvas = document.getElementById('myCanvas');
 	var context = canvas.getContext('2d');
 
@@ -102,7 +104,7 @@
 /* 1 */
 /***/ function(module, exports) {
 
-	
+
 
 	function Frog(x, y, width, height){
 	  this.x = x;
@@ -116,7 +118,10 @@
 	  context.fillStyle = "turquoise";
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 36b13e161d09fc1bfbd7c81414bbe9903db3b379
 	Frog.prototype.moveFrog = function(canvas, rightPressed, leftPressed, upPressed, downPressed) {
 	  if (rightPressed) {
 	    this.x += 5;
@@ -136,7 +141,7 @@
 /* 2 */
 /***/ function(module, exports) {
 
-	
+
 
 	function Cars (x, y, width, height){
 	 this.x = x;
@@ -150,9 +155,13 @@
 	return this;
 	};
 
+<<<<<<< HEAD
 	Cars.prototype.move = function(){
 
 	}
+=======
+	c
+>>>>>>> 36b13e161d09fc1bfbd7c81414bbe9903db3b379
 
 
 	var firstCar = new Cars(50, 50, 10, 10);
