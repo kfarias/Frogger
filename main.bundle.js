@@ -53,6 +53,19 @@
 
 	var frog = new Frog((canvas.width-25)/2, (canvas.height-30), 25, 25)
 
+	var carArray = [];
+	carArray.push(new Cars(0, 70, 50, 50));
+	carArray.push(new Cars(550, 120, 50, 50));
+	carArray.push(new Cars(0, 170, 50, 50));
+	carArray.push(new Cars(550, 220, 50, 50));
+	carArray.push(new Cars(0, 270, 50, 50));
+	carArray.push(new Cars(550, 320, 50, 50));
+
+	carArray.push(new Cars(0, 470, 50, 50));
+	carArray.push(new Cars(550, 520, 50, 50));
+	carArray.push(new Cars(0, 570, 50, 50));
+	carArray.push(new Cars(550, 620, 50, 50));
+	carArray.push(new Cars(0, 670, 50, 50));
 
 
 	var rightPressed = false;
@@ -92,8 +105,9 @@
 	requestAnimationFrame(function gameLoop() {
 	  context.clearRect(0, 0, canvas.width, canvas.height);
 	  frog.drawFrog(context);
-	  // carArray.forEach(function(car) {
-	  //   car.draw(context))};
+	  carArray.forEach(function(car) {
+	    car.draw(context)
+	});
 	  frog.moveFrog(canvas, rightPressed, leftPressed, upPressed, downPressed);
 	  requestAnimationFrame(gameLoop);
 	});
@@ -154,10 +168,9 @@
 	return this;
 	};
 
-	var carArray = [];
 
-	carArray.push(new Cars(10, 10, 50, 50));
-	carArray.push(new Cars(40, 40, 40, 40));
+
+
 
 
 
