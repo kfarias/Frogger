@@ -51,21 +51,21 @@
 	var canvas = document.getElementById('myCanvas');
 	var context = canvas.getContext('2d');
 
-	var frog = new Frog((canvas.width-25)/2, (canvas.height-30), 25, 25)
+	var frog = new Frog((canvas.width-25)/2, (canvas.height-30), 25, 25, canvas)
 
-	var carArray = [];
-	carArray.push(new Cars(0, 70, 50, 50));
-	carArray.push(new Cars(550, 120, 50, 50));
-	carArray.push(new Cars(0, 170, 50, 50));
-	carArray.push(new Cars(550, 220, 50, 50));
-	carArray.push(new Cars(0, 270, 50, 50));
-	carArray.push(new Cars(550, 320, 50, 50));
+	var carArrayOne = [];
+	carArrayOne.push(new Cars(100, 70, 100, 50));
+	carArrayOne.push(new Cars(500, 70, 100, 50));
+	carArrayOne.push(new Cars());
 
-	carArray.push(new Cars(0, 470, 50, 50));
-	carArray.push(new Cars(550, 520, 50, 50));
-	carArray.push(new Cars(0, 570, 50, 50));
-	carArray.push(new Cars(550, 620, 50, 50));
-	carArray.push(new Cars(0, 670, 50, 50));
+	var carArrayTwo = [];
+	carArrayTwo.push(new Cars(550, 150, 50, 50));
+	carArrayTwo.push(new Cars(450, 150, 50, 50));
+	carArrayTwo.push(new Cars(250, 150, 50, 50));
+	carArrayTwo.push(new Cars(150, 150, 50, 50));
+
+
+
 
 
 	var rightPressed = false;
@@ -79,14 +79,30 @@
 	document.addEventListener("keyup", keyUpHandler, false);
 
 	function keyDownHandler(event) {
+
 	  if (event.keyCode === 39) {
-	    rightPressed = true;
+	    if(rightPressed === false) {
+	      frog.moveRight();
+	      rightPressed = true;
+	    }
+
 	  } else if (event.keyCode === 37) {
-	    leftPressed = true;
+	      if (leftPressed === false) {
+	        frog.moveLeft();
+	        leftPressed = true;
+	      }
+
 	  } else if (event.keyCode === 38) {
-	    upPressed = true;
+	    if (upPressed === false) {
+	      frog.moveUp();
+	      upPressed = true;
+	    }
+
 	  } else if (event.keyCode === 40) {
-	    downPressed = true;
+	    if (downPressed === false) {
+	      frog.moveDown();
+	      downPressed = true;
+	    }
 	  }
 	}
 
@@ -105,10 +121,20 @@
 	requestAnimationFrame(function gameLoop() {
 	  context.clearRect(0, 0, canvas.width, canvas.height);
 	  frog.drawFrog(context);
-	  carArray.forEach(function(car) {
-	    car.draw(context)
+	  carArrayOne.forEach(function(car) {
+	    car.draw(context);
 	});
-	  frog.moveFrog(canvas, rightPressed, leftPressed, upPressed, downPressed);
+	  carArrayOne.forEach(function(car) {
+	    car.moveOne(context);
+	  })
+
+	  carArrayTwo.forEach(function(car) {
+	    car.draw(context);
+	});
+	  carArrayTwo.forEach(function(car) {
+	    car.moveTwo(context);
+	  })
+	  // frog.moveFrog(canvas, rightPressed, leftPressed, upPressed, downPressed);
 	  requestAnimationFrame(gameLoop);
 	});
 
@@ -122,11 +148,12 @@
 
 	
 
-	function Frog(x, y, width, height){
+	function Frog(x, y, width, height, canvas){
 	  this.x = x;
 	  this.y = y;
 	  this.width = width;
 	  this.height = height;
+	  this.canvas = canvas;
 	}
 
 	Frog.prototype.drawFrog = function(context) {
@@ -134,18 +161,48 @@
 	  context.fillStyle = "turquoise";
 	}
 
-
-	Frog.prototype.moveFrog = function(canvas, rightPressed, leftPressed, upPressed, downPressed) {
-	  if (rightPressed) {
-	    this.x += 5;
-	  } else if (leftPressed && this.x > 0) {
-	    this.x -= 5;
-	  } else if (upPressed && this.y > 0) {
-	    this.y -= 5;
-	  } else if (downPressed && this.y < canvas.height-this.height) {
-	    this.y += 5;
+	Frog.prototype.moveRight = function(){
+	  if(this.canMoveRight()){
+	    this.x +=20;
 	  }
 	}
+
+	Frog.prototype.canMoveRight = function(){
+	  return this.x < this.canvas.width-this.height
+	}
+
+
+	Frog.prototype.moveLeft = function(){
+	  if(this.canMoveLeft()){
+	    this.x -=20;
+	  }
+	}
+
+	Frog.prototype.canMoveLeft = function(){
+	  return this.x > 0;
+	}
+
+	Frog.prototype.moveUp = function(){
+	  if(this.canMoveUp()){
+	    this.y -= 20;
+	  }
+	}
+
+	Frog.prototype.canMoveUp = function(){
+	  return this.y > 0;
+	}
+
+	Frog.prototype.moveDown = function(){
+	  if(this.canMoveDown()){
+	    this.y += 20;
+	  }
+	}
+
+	Frog.prototype.canMoveDown = function(){
+	  return this.y < this.canvas.height-this.height
+	}
+
+
 
 	module.exports = Frog;
 
@@ -167,6 +224,14 @@
 	context.fillRect(this.x, this.y, this.width, this.height);
 	return this;
 	};
+
+	Cars.prototype.moveOne = function(context) {
+	  this.x--;
+	}
+
+	Cars.prototype.moveTwo = function(context) {
+	  this.x++;
+	}
 
 
 
