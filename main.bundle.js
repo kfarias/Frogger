@@ -53,20 +53,49 @@
 
 	var frog = new Frog((canvas.width-25)/2, (canvas.height-30), 25, 25, canvas)
 
-	var carArrayOne = [];
-	carArrayOne.push(new Cars(100, 70, 100, 50));
-	carArrayOne.push(new Cars(500, 70, 100, 50));
-	carArrayOne.push(new Cars());
+	var carRowOne = [];
+	carRowOne.push(new Cars(100, 70, 100, 50));
+	carRowOne.push(new Cars(500, 70, 130, 50));
+	carRowOne.push(new Cars(300, 70, 100, 50));
 
-	var carArrayTwo = [];
-	carArrayTwo.push(new Cars(550, 150, 50, 50));
-	carArrayTwo.push(new Cars(450, 150, 50, 50));
-	carArrayTwo.push(new Cars(250, 150, 50, 50));
-	carArrayTwo.push(new Cars(150, 150, 50, 50));
+	var carRowTwo = [];
+	carRowTwo.push(new Cars(550, 150, 50, 50));
+	carRowTwo.push(new Cars(450, 150, 50, 50));
+	carRowTwo.push(new Cars(250, 150, 50, 50));
+	carRowTwo.push(new Cars(150, 150, 50, 50));
 
+	var carRowThree = [];
+	carRowThree.push(new Cars(120, 230, 70, 50));
+	carRowThree.push(new Cars(320, 230, 70, 50));
+	carRowThree.push(new Cars(520, 230, 70, 50));
 
+	var carRowFour = [];
+	carRowFour.push(new Cars(600, 300, 50, 50));
+	carRowFour.push(new Cars(470, 300, 50, 50));
+	carRowFour.push(new Cars(230, 300, 50, 50));
+	carRowFour.push(new Cars(280, 300, 50, 50));
 
+	var carRowFive = [];
+	carRowFive.push(new Cars(220, 440, 70, 50));
+	carRowFive.push(new Cars(420, 440, 70, 50));
+	carRowFive.push(new Cars(520, 440, 70, 50));
 
+	var carRowSix = [];
+	carRowSix.push(new Cars(600, 530, 50, 50));
+	carRowSix.push(new Cars(470, 530, 50, 50));
+	carRowSix.push(new Cars(230, 530, 50, 50));
+	carRowSix.push(new Cars(280, 530, 50, 50));
+
+	var carRowSeven = [];
+	carRowSeven.push(new Cars(120, 600, 100, 50));
+	carRowSeven.push(new Cars(320, 600, 100, 50));
+	carRowSeven.push(new Cars(520, 600, 100, 50));
+
+	var carRowEight = [];
+	carRowEight.push(new Cars(550, 670, 50, 50));
+	carRowEight.push(new Cars(450, 670, 50, 50));
+	carRowEight.push(new Cars(250, 670, 50, 50));
+	carRowEight.push(new Cars(150, 670, 50, 50));
 
 	var rightPressed = false;
 	var leftPressed = false;
@@ -121,18 +150,109 @@
 	requestAnimationFrame(function gameLoop() {
 	  context.clearRect(0, 0, canvas.width, canvas.height);
 	  frog.drawFrog(context);
-	  carArrayOne.forEach(function(car) {
+
+	  carRowOne.forEach(function(car) {
 	    car.draw(context);
 	});
-	  carArrayOne.forEach(function(car) {
+	  carRowOne.forEach(function(car) {
 	    car.moveOne(context);
+	    if (frog.x < car.x + car.width &&
+	     frog.x + frog.width > car.x &&
+	     frog.y < car.y + car.height &&
+	     frog.height + frog.y > car.y) {
+	      console.log('dead1');
+	    }
 	  })
 
-	  carArrayTwo.forEach(function(car) {
+	  carRowTwo.forEach(function(car) {
 	    car.draw(context);
 	});
-	  carArrayTwo.forEach(function(car) {
+	  carRowTwo.forEach(function(car) {
 	    car.moveTwo(context);
+	    if (frog.x < car.x + car.width &&
+	     frog.x + frog.width > car.x &&
+	     frog.y < car.y + car.height &&
+	     frog.height + frog.y > car.y) {
+	      console.log('dead2');
+	    }
+	  })
+
+	  carRowThree.forEach(function(car) {
+	    car.draw(context);
+	});
+	  carRowThree.forEach(function(car) {
+	    car.moveThree(context);
+	    if (frog.x < car.x + car.width &&
+	     frog.x + frog.width > car.x &&
+	     frog.y < car.y + car.height &&
+	     frog.height + frog.y > car.y) {
+	      console.log('dead3');
+	    }
+	  })
+
+	  carRowFour.forEach(function(car) {
+	    car.draw(context);
+	});
+	  carRowFour.forEach(function(car) {
+	    car.moveFour(context);
+	    if (frog.x < car.x + car.width &&
+	     frog.x + frog.width > car.x &&
+	     frog.y < car.y + car.height &&
+	     frog.height + frog.y > car.y) {
+	      console.log('dead4');
+	    }
+	  })
+
+	  carRowFive.forEach(function(car) {
+	    car.draw(context);
+	});
+	  carRowFive.forEach(function(car) {
+	    car.moveFive(context);
+	    if (frog.x < car.x + car.width &&
+	     frog.x + frog.width > car.x &&
+	     frog.y < car.y + car.height &&
+	     frog.height + frog.y > car.y) {
+	      console.log('dead5');
+	    }
+	  })
+
+	  carRowSix.forEach(function(car) {
+	    car.draw(context);
+	});
+	  carRowSix.forEach(function(car) {
+	    car.moveSix(context);
+	    if (frog.x < car.x + car.width &&
+	     frog.x + frog.width > car.x &&
+	     frog.y < car.y + car.height &&
+	     frog.height + frog.y > car.y) {
+	      console.log('dead6');
+	    }
+	  })
+
+	  carRowSeven.forEach(function(car) {
+	    car.draw(context);
+	});
+	  carRowSeven.forEach(function(car) {
+	    car.moveSeven(context);
+	    if (frog.x < car.x + car.width &&
+	     frog.x + frog.width > car.x &&
+	     frog.y < car.y + car.height &&
+	     frog.height + frog.y > car.y) {
+	      console.log('dead7');
+	    }
+	  })
+
+	  carRowEight.forEach(function(car) {
+	    car.draw(context);
+	});
+	  carRowEight.forEach(function(car) {
+	    car.moveEight(context);
+	    if (frog.x < car.x + car.width &&
+	     frog.x + frog.width > car.x &&
+	     frog.y < car.y + car.height &&
+	     frog.height + frog.y > car.y) {
+	      console.log('dead8');
+	    }
 	  })
 	  // frog.moveFrog(canvas, rightPressed, leftPressed, upPressed, downPressed);
 	  requestAnimationFrame(gameLoop);
@@ -158,12 +278,14 @@
 
 	Frog.prototype.drawFrog = function(context) {
 	  context.fillRect(this.x, this.y, this.width, this.height);
-	  context.fillStyle = "turquoise";
+	  var img = document.getElementById("frogpicture");
+	   context.fillStyle = img;
+	   context.fill();
 	}
 
 	Frog.prototype.moveRight = function(){
 	  if(this.canMoveRight()){
-	    this.x +=20;
+	    this.x +=70;
 	  }
 	}
 
@@ -174,7 +296,7 @@
 
 	Frog.prototype.moveLeft = function(){
 	  if(this.canMoveLeft()){
-	    this.x -=20;
+	    this.x -=70;
 	  }
 	}
 
@@ -184,7 +306,7 @@
 
 	Frog.prototype.moveUp = function(){
 	  if(this.canMoveUp()){
-	    this.y -= 20;
+	    this.y -= 70;
 	  }
 	}
 
@@ -194,7 +316,7 @@
 
 	Frog.prototype.moveDown = function(){
 	  if(this.canMoveDown()){
-	    this.y += 20;
+	    this.y += 70;
 	  }
 	}
 
@@ -226,18 +348,60 @@
 	};
 
 	Cars.prototype.moveOne = function(context) {
+	  if (this.x < -100) {
+	    this.x = 600;
+	  }
 	  this.x--;
 	}
 
 	Cars.prototype.moveTwo = function(context) {
+	  if (this.x > 650) {
+	    this.x = -50;
+	  }
 	  this.x++;
 	}
 
+	Cars.prototype.moveThree = function(context) {
+	  if (this.x < -70) {
+	    this.x = 600;
+	  }
+	  this.x--;
+	}
 
+	Cars.prototype.moveFour = function(context) {
+	  if (this.x > 650) {
+	    this.x = -50;
+	  }
+	  this.x++;
+	}
 
+	Cars.prototype.moveFive = function(context) {
+	  if (this.x < -70) {
+	    this.x = 600;
+	  }
+	  this.x--;
+	}
 
+	Cars.prototype.moveSix = function(context) {
+	  if (this.x > 650) {
+	    this.x = -50;
+	  }
+	  this.x++;
+	}
 
+	Cars.prototype.moveSeven = function(context) {
+	  if (this.x < -100) {
+	    this.x = 600;
+	  }
+	  this.x--;
+	}
 
+	Cars.prototype.moveEight = function(context) {
+	  if (this.x > 650) {
+	    this.x = -50;
+	  }
+	  this.x++;
+	}
 
 	//
 	// var firstCar = new Cars(50, 50, 10, 10);
