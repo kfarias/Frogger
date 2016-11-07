@@ -1,19 +1,26 @@
 .game-canvas {
-  border: 1px dashed;
+  border: 1px solid;
   margin: auto;
   display: block;
 }
 
-#splashScreen {
+#splashScreen, #finishScreen {
      margin: 0 auto;
      text-align:center;
      width:500px;
      height: 600px;
      border: 2px solid black;
-     background-image: url('/images/froggersplashScreen.svg');
  }
 
- .start-btn {
+ #splashScreen {
+   background-image: url('/images/froggersplashScreen.svg');
+ }
+
+ #finishScreen {
+   background-image: url('/images/froggerFinishScreen.svg');
+ }
+
+ .start-btn, .home-btn, .try-again-btn {
    background-color: #e6ac22;
    border: none;
    border-radius: 10px;
@@ -21,13 +28,20 @@
    height: 50px;
    font-family: 'Coiny', cursive;
    font-size: 25px;
-   margin-top: 479px;
    text-align: center;
    width: 90px;
-
  }
 
- .start-btn:hover {
+ .start-btn {
+   margin-top: 479px;
+ }
+
+ .home-btn, .try-again-btn {
+   margin-top: 300px;
+   margin-left: 20px;
+ }
+
+ .start-btn:hover, .home-btn:hover, .try-again-btn:hover {
    background-color: #e2c791;
    border: none;
    border-radius: 10px;
@@ -35,7 +49,6 @@
    height: 50px;
    font-family: 'Coiny', cursive;
    font-size: 25px;
-   margin-top: 479px;
    text-align: center;
    width: 90px;
  }
