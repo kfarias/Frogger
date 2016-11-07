@@ -4,6 +4,38 @@
   display: block;
 }
 
-h1 {
-  text-align: center;
-}
+#splashScreen {
+     margin: 0 auto;
+     text-align:center;
+     width:500px;
+     height: 600px;
+     border: 2px solid black;
+     background-image: url('/images/froggersplashScreen.svg');
+ }
+
+ .start-btn {
+   background-color: #e6ac22;
+   border: none;
+   border-radius: 10px;
+   color: #000000;
+   height: 50px;
+   font-family: 'Coiny', cursive;
+   font-size: 25px;
+   margin-top: 479px;
+   text-align: center;
+   width: 90px;
+
+ }
+
+ .start-btn:hover {
+   background-color: #e2c791;
+   border: none;
+   border-radius: 10px;
+   color: #000000;
+   height: 50px;
+   font-family: 'Coiny', cursive;
+   font-size: 25px;
+   margin-top: 479px;
+   text-align: center;
+   width: 90px;
+ }
